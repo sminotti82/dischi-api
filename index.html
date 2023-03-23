@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>Vue-dischi</title>
+</head>
+<body>
+       <div id="root">
+            <div class="containerApp">
+                <div class="header">
+                    
+                    <h3>seleziona per genere</h3>
+                    <select v-model="cerca" name="" id="">
+                        <option  value=""  >seleziona genere</option>
+                        <option v-for="genere in generi">{{genere}}</option>
+                    </select>
+                    <button @click="ritorna" style="width: 120px;height: 40px;margin-top: 20px;background-color: rgb(57, 150, 57);color: white;border: none;outline: none;">Torna alla home</button>
+                    
+                </div>
+                <div class="main">
+                  
+                    <div v-if="selected(carta)" v-for="carta in dischi"     class="cards">
+                         <div class="copertina">
+                               <img :src="carta.poster" alt="">
+                         </div>
+
+                            <div class="title">
+                                <span>TITOLO</span>
+                                <h4>{{carta.title}}</h4>
+                                <span>ARTISTA</span>
+                                <h4>{{carta.author}}</h4>
+                            </div>
+
+                                <div class="descrizione">
+                                    <span>GENERE</span>
+                                    <H4>{{carta.genre}}</H4>
+                                    <span>ANNO DI USCITA</span>
+                                    <h4>{{carta.year}}</h4>
+                                </div>
+
+                    </div>
+            
+                  
+                </div>
+                <div class="coverPage" :class="(cerca =='')?'visibile':'invisibile'"></div>
+                <div  :class="(cerca =='')?'visibile':'invisibile'" class="titoloCover">
+                    <h1>SEBA MUSIC-ZONE</h1>
+                </div>
+            </div>
+       </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
