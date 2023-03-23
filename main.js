@@ -3,23 +3,30 @@ const app = new Vue({
     data:{
        
         dischi:[],
+        ordinati:[],
         generi:['All'], 
+        anno:0,
         cerca:'',
     },
     mounted(){
           axios.get('https://flynn.boolean.careers/exercises/api/array/music')
                .then((disco)=>{
                          this.dischi=disco.data.response
-                        
+                        this.dischi.sort((x, y)=> x.year - y.year)
+                        console.log(this.dischi);
                          this.dischi.forEach(element => {
-                               console.log(element);
+                    
                                
                                !this.generi.includes(element.genre)?this.generi.push(element.genre):''
-                               
-                         });console.log(this.generi);
 
-                         console.log(this.cerca);
+
+                         });
+
+                       
                })
+
+
+         
     },
     methods:{
               selected(song){
