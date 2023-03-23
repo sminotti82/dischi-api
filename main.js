@@ -3,9 +3,7 @@ const app = new Vue({
     data:{
        
         dischi:[],
-        ordinati:[],
         generi:['All'], 
-        anno:0,
         cerca:'',
     },
     mounted(){
